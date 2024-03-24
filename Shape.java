@@ -73,7 +73,7 @@ public class Shape
                 break;
 
             case "Circle":
-            Shape circle = new circle(color);
+            Shape circle = new Circle(color);
                 break;
 
             case "Square":

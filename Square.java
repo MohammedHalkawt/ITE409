@@ -1,6 +1,7 @@
-public class Sphere extends Shape
+public class Square extends Shape
 {
-    public Sphere(String color) 
+
+    public Square(String color) 
     {
         super(color);
         System.out.println("Please provide the coordinates of the shape");
@@ -15,7 +16,7 @@ public class Sphere extends Shape
 
     public void setPosition(double x, double y, double z)
     {
-
+        
     }
     public String getPosition()
     {
