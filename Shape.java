@@ -1,34 +1,38 @@
 import java.security.SecureRandom;
-import java.util.Scanner;
 
-public class Shape
+abstract class Shape
 {
     private int shapeId;
     private String color;
+    private point centerPoint;
+    private String type;
 
-    public Shape(String color)
+    public Shape(String color, point center, String type)
     {
-        setId();
+        initializeId();
         setColor(color);
+        setCenterPoint(center);
+        setType(type);
     }
 
-    private void setId()
+    private void setCenterPoint(point centerPoint){
+        this.centerPoint = centerPoint;
+    }
+
+    public point getCenterPoint()
     {
-        shapeId = generateRandomId();
+        return this.centerPoint;
+    }
+
+    private void initializeId()
+    {
+        SecureRandom random = new SecureRandom();
+        shapeId = 1000 +random.nextInt(10000);
     }
 
     public int getId()
     {
-        return shapeId;
-    }
-
-    private int generateRandomId()
-    {
-        SecureRandom random = new SecureRandom();
-
-        int randomId = 1000 +random.nextInt(10000);
-
-        return randomId;
+        return this.shapeId;
     }
 
     public void setColor(String color)
@@ -41,50 +45,19 @@ public class Shape
         return color;
     }
 
-    @Override
-    public String toString()
+    public void setType(String type){
+        this.type = type;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public abstract double getArea();
+
+    public void print()
     {
         
-        return "Shape ID: " + getId() + "\nShape color: " + getColor();
-    }
-
-    public void setPosition()
-    {
-        return;
-    }
-
-    public void createShape()
-    {
-        Scanner input = new Scanner(System.in);
-        System.err.println("Please enter the color of the shape: ");
-        color = input.nextLine();
-
-        System.out.println("Please enter type(Sphere, Cube, Circle, Square, Triangle): ");
-        String type = input.nextLine();
-
-        switch(type)
-        {
-            case "Sphere":
-            Shape sphere = new Sphere(color);
-                break;
-            
-            case "Cube":
-            Shape cube = new Cube(color);
-                break;
-
-            case "Circle":
-            Shape circle = new Circle(color);
-                break;
-
-            case "Square":
-            Shape square = new Square(color);
-                break;
-            
-            case "Triangle":
-            Shape triangle = new Triangle(color);
-                break;
-        }
-
     }
 }
 

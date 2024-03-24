@@ -1,25 +1,24 @@
 public class Circle extends Shape{
+    private int radius;
 
-    public Circle(String color) 
+    public Circle(String color,point centerPoint,int radius) 
     {
-        super(color);
-        System.out.println("Please provide the coordinates of the shape");
-        
+        super(color,centerPoint,"Circle");
+        setRadius(radius);        
     }
 
-    @Override
-    public String toString()
-    {
-        return super.toString() + "\nShape Position: " + getPosition();
+    public void setRadius(int radius){
+        this.radius = radius;
     }
 
-    public void setPosition(double x, double y, double z)
-    {
-        
+    public int getRadius(){
+        return this.radius;
     }
-    public String getPosition()
-    {
-        return "a";
+
+    public double getArea(){
+
+        return Math.PI * radius * radius;
+
     }
 
 }
